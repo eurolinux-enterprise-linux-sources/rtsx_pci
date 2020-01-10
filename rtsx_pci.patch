@@ -1,0 +1,14 @@
+diff --git a/drivers/mfd/rtsx_pcr.c b/drivers/mfd/rtsx_pcr.c
+index 8780ad2..7d29bbc 100644
+--- a/drivers/mfd/rtsx_pcr.c
++++ b/drivers/mfd/rtsx_pcr.c
+@@ -35,6 +35,9 @@
+ 
+ #include "rtsx_pcr.h"
+ 
++#define DRIVER_VERSION "0.1-rh1"
++MODULE_VERSION(DRIVER_VERSION);
++
+ static bool msi_en = true;
+ module_param(msi_en, bool, S_IRUGO | S_IWUSR);
+ MODULE_PARM_DESC(msi_en, "Enable MSI");
