@@ -1,22 +1,21 @@
 %define kmod_name		rtsx_pci
-%define kmod_driver_version	0.1_rh1
+%define kmod_driver_version	642
 %define kmod_rpm_release	1
-%define kmod_git_hash		d9e3920ac40970a4164c889996ec7c25523afe1c
-%define kmod_kernel_version	2.6.32-431.el6
-%define kernel_version		2.6.32-431.el6
+%define kmod_git_hash		e598a73fb2f4d25839f56eb423b1ad10dc2f4609
+%define kmod_kernel_version	2.6.32-642.el6
+%define kernel_version		2.6.32-642.el6
 %define kmod_kbuild_dir		drivers/mfd/
 
+%{!?dist: %define dist .el6_8}
 
-%{!?dist: %define dist .el6}
-
-Source0:	%{kmod_name}-%{kmod_driver_version}.tar.bz2			
-Source1:	%{kmod_name}.files			
-Source2:	depmodconf			
-Source3:	find-requires.ksyms			
-Source4:	find-provides.ksyms			
-Source5:	kmodtool			
-Source6:	symbols.greylist-i686			
-Source7:	symbols.greylist-x86_64			
+Source0:	%{kmod_name}-%{kmod_driver_version}.tar.bz2
+Source1:	%{kmod_name}.files
+Source2:	depmodconf
+Source3:	find-requires.ksyms
+Source4:	find-provides.ksyms
+Source5:	kmodtool
+Source6:	symbols.greylist-i686
+Source7:	symbols.greylist-x86_64
 
 Patch0:		rtsx_pci.patch
 
@@ -32,7 +31,7 @@ Group:		System/Kernel
 License:	GPLv2
 URL:		http://www.kernel.org/
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
-BuildRequires:	%kernel_module_package_buildreqs
+BuildRequires:	kernel-devel = %kmod_kernel_version
 ExclusiveArch:  i686 x86_64
 
 
@@ -105,5 +104,6 @@ fi
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
-* Sun Aug 17 2014 Weiping Pan <wpan@redhat.com> 0.1_rh1 1
+* Tue Oct 18 2016 Petr Oros <poros@redhat.com> 642 1
 - rtsx_pci DUP module
+- Resolves: #1410849

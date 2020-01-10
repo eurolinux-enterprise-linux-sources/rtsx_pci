@@ -1,3 +1,0 @@
-mfd_add_devices
-mfd_remove_devices
-pcie_capability_read_word
